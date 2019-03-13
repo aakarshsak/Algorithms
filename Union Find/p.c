@@ -7,31 +7,45 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-#define INF 999999
+#define INF 9
 
 
 //Function to find the vertex in the graph
+int find(int *parent,int n)
+{
+	if(parent[n]==-1)
+		return n;
+	return find(parent,parent[n]);
+}
+
+
+//Function union to make a bigger set of two smaller sets
+void unionSet(int *parent,int src,int des)
+{
+	int x=find(parent,src);
+	int y=find(parent,des);
+	parent[x]=y;
+}
 //Function to find out if there is a cycle in  the graph or not
-bool isCycle(int g[50][50],int v,int e,int ed[50][50])
+bool isCycle(int g[50][50],int v,int e,int ed[50][2])
 {
 	int parent[v],x,y,i;
 	for(i=0;i<v;i++)
 	{
-		parent[i]=i;
+		parent[i]=-1;
 	}
 
 	for(i=0;i<e;i++)
 	{
 		int src=ed[i][0];
 		int des=ed[i][1];
-		//x=find(parent,src);
-		//y=find(parent,des);
+		x=find(parent,src);
+		y=find(parent,des);
 		if(x==y)
 		{
 			return 1;
 		}
-
-		//union(parent,parent[i]);
+		unionSet(parent,x,y);
 	}
 
 	return 0;
