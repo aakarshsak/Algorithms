@@ -2,7 +2,7 @@
 * @Author: Aakarsh
 * @Date:   2019-03-13 22:29:06
 * @Last Modified by:   Aakarsh
-* @Last Modified time: 2019-03-14 00:28:51
+* @Last Modified time: 2019-03-20 18:44:10
 */
 
 
@@ -47,6 +47,8 @@ void kruskals(int g[50][50],int mst[50][50],int v,int e,int edges[50][3])
 
 	
 	i=0,j=0;  //i is a edge count variable to count the numbere of edges in the MST 
+
+	//reapeating  step 2 until cycle until v-1 
 	while(i<v-1 && j<e)
 	{
 		int src=edges[j][0];
