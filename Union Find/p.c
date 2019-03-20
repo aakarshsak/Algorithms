@@ -66,6 +66,9 @@ int main()
 		for(j=0;j<v;j++)
 		{
 			scanf("%d",&g[i][j]);
+
+			//defining an array of edges to g[i][j]!=INF is to check whethere 
+			//there is an edge between two node and i<j so that edge does not repeat  
 			if(g[i][j]!=INF && i<j)
 			{
 				edges[x][0]=i;
